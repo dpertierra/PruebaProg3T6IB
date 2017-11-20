@@ -32,7 +32,6 @@ public class Game {
     Sprite spriteRojo;
     Sprite spriteAzul;
     Sprite spriteBlanco;
-    ArrayList<Sprite>arraySprites = new ArrayList<>();
 
     public Game(CCGLSurfaceView Vistadeljuego)
     {
@@ -107,7 +106,7 @@ public class Game {
         @Override
         public boolean ccTouchesMoved(MotionEvent event) {
 
-            MoveBy mover = MoveBy.action(1f,30,0);
+            MoveBy mover = MoveBy.action(4f,30,0);
 
             do {
                 spriteVerde.runAction(mover);
@@ -127,16 +126,8 @@ public class Game {
                 spriteBlanco.runAction(mover);
             }while (((spriteBlanco.getPositionX() + spriteBlanco.getWidth()/2) + 30) < PantallaDispositivo.getWidth());
 
-/*
-            for (int i=0; i<4; i++)
-            {
-                if ((arraySprites.get(i).getPositionX() + arraySprites.get(i).getWidth()/2 + 30) < PantallaDispositivo.getWidth()) {
-                    arraySprites.get(i).runAction(mover);
-                }
-            }*/
             return true;
         }
-
         @Override
         public boolean ccTouchesEnded(MotionEvent event) {
             IntervalAction Secuencia;
@@ -155,18 +146,12 @@ public class Game {
             spriteAzul = Sprite.sprite("cuadradoazul.png");
             spriteBlanco = Sprite.sprite("cuadradoblanco.png");
 
-
-            arraySprites.add(spriteVerde);
-            arraySprites.add(spriteRojo);
-            arraySprites.add(spriteAzul);
-            arraySprites.add(spriteBlanco);
-
-            spriteVerde.setPosition(PantallaDispositivo.getWidth()/4 - spriteVerde.getWidth()/4, PantallaDispositivo.getHeight()/4 + spriteVerde.getHeight()/4);
-            spriteRojo.setPosition(PantallaDispositivo.getWidth() - spriteRojo.getWidth(), PantallaDispositivo.getHeight()/4 + spriteRojo.getHeight()/4);
+            spriteVerde.setPosition(PantallaDispositivo.getWidth()/4 - spriteVerde.getWidth()/2, PantallaDispositivo.getHeight()/4 + spriteVerde.getHeight()/4);
+            spriteRojo.setPosition(PantallaDispositivo.getWidth() - spriteRojo.getWidth()/2, PantallaDispositivo.getHeight()/4 + spriteRojo.getHeight()/4);
 
 
-            spriteAzul.setPosition(PantallaDispositivo.getWidth() - spriteAzul.getWidth(), PantallaDispositivo.getHeight() - spriteAzul.getHeight()*2);
-            spriteBlanco.setPosition(PantallaDispositivo.getWidth()/4 - spriteBlanco.getWidth()/4, PantallaDispositivo.getHeight() - spriteBlanco.getHeight()*2);
+            spriteAzul.setPosition(PantallaDispositivo.getWidth() - spriteAzul.getWidth()/2, PantallaDispositivo.getHeight() - spriteAzul.getHeight()*2);
+            spriteBlanco.setPosition(PantallaDispositivo.getWidth()/4 - spriteBlanco.getWidth()/2, PantallaDispositivo.getHeight() - spriteBlanco.getHeight()*2);
 
             Log.d("Verde position", " x " + spriteVerde.getPositionX() + " y " + spriteVerde.getPositionY());
             Log.d("Rojo position", " x " + spriteRojo.getPositionX() + " y " + spriteRojo.getPositionY());
