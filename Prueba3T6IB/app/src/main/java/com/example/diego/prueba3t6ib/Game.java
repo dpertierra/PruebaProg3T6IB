@@ -71,35 +71,38 @@ public class Game {
            RotateBy rotateByIzquierda2 = RotateBy.action(1f, -360f);
            RotateBy rotateByIzquierda3 = RotateBy.action(1f, -360f);
             Log.d("Random " , "El num es " + spriteElegido);
-           if (spriteElegido==0) {
-                spriteVerde.runAction(rotateByDerecha);
-                spriteRojo.runAction(rotateByIzquierda);
-                spriteAzul.runAction(rotateByIzquierda2);
-                spriteBlanco.runAction(rotateByIzquierda3);
-                Log.d("Opuesto", "El sprite VERDE gira para la derecha y todo el resto para la izquierda");
-            }
 
-           else if (spriteElegido==1) {
-                spriteRojo.runAction(rotateByDerecha);
-                spriteVerde.runAction(rotateByIzquierda);
-                spriteAzul.runAction(rotateByIzquierda2);
-                spriteBlanco.runAction(rotateByIzquierda3);
-                Log.d("Opuesto", "El sprite ROJO gira para la derecha y todo el resto para la izquierda");
-            }
-           else if (spriteElegido == 2) {
-                spriteAzul.runAction(rotateByDerecha);
-                spriteRojo.runAction(rotateByIzquierda);
-                spriteVerde.runAction(rotateByIzquierda2);
-                spriteBlanco.runAction(rotateByIzquierda3);
-                Log.d("Opuesto", "El sprite AZUL gira para la derecha y todo el resto para la izquierda");
-            }
-           else if (spriteElegido == 3) {
-                spriteBlanco.runAction(rotateByDerecha);
-                spriteRojo.runAction(rotateByIzquierda);
-                spriteAzul.runAction(rotateByIzquierda);
-                spriteVerde.runAction(rotateByIzquierda);
-                Log.d("Opuesto", "El sprite BLANCO gira para la derecha y todo el resto para la izquierda");
-            }
+           switch (spriteElegido){
+               case 0:
+                   spriteVerde.runAction(rotateByDerecha);
+                   spriteRojo.runAction(rotateByIzquierda);
+                   spriteAzul.runAction(rotateByIzquierda2);
+                   spriteBlanco.runAction(rotateByIzquierda3);
+                   Log.d("Opuesto", "El sprite VERDE gira para la derecha y todo el resto para la izquierda");
+                   break;
+               case 1:
+                   spriteRojo.runAction(rotateByDerecha);
+                   spriteVerde.runAction(rotateByIzquierda);
+                   spriteAzul.runAction(rotateByIzquierda2);
+                   spriteBlanco.runAction(rotateByIzquierda3);
+                   Log.d("Opuesto", "El sprite ROJO gira para la derecha y todo el resto para la izquierda");
+                   break;
+               case 2:
+                   spriteAzul.runAction(rotateByDerecha);
+                   spriteRojo.runAction(rotateByIzquierda);
+                   spriteVerde.runAction(rotateByIzquierda2);
+                   spriteBlanco.runAction(rotateByIzquierda3);
+                   Log.d("Opuesto", "El sprite AZUL gira para la derecha y todo el resto para la izquierda");
+                   break;
+               case 3:
+                   spriteBlanco.runAction(rotateByDerecha);
+                   spriteRojo.runAction(rotateByIzquierda);
+                   spriteAzul.runAction(rotateByIzquierda);
+                   spriteVerde.runAction(rotateByIzquierda);
+                   Log.d("Opuesto", "El sprite BLANCO gira para la derecha y todo el resto para la izquierda");
+                   break;
+           }
+
             return true;
         }
 
@@ -107,6 +110,28 @@ public class Game {
         public boolean ccTouchesMoved(MotionEvent event) {
 
             MoveBy mover = MoveBy.action(4f,30,0);
+            Log.d("Moved", "entro");
+            /*
+            if ((spriteVerde.getPositionX()+spriteVerde.getWidth()/2) < PantallaDispositivo.getWidth())
+            {
+                spriteVerde.runAction(mover);
+            }
+
+            if (((spriteRojo.getPositionX()+spriteRojo.getWidth()/2)+30) < PantallaDispositivo.getWidth())
+            {
+                spriteRojo.runAction(mover);
+            }
+
+            if (((spriteAzul.getPositionX()+spriteAzul.getWidth()/2)+30) < PantallaDispositivo.getWidth())
+            {
+                spriteAzul.runAction(mover);
+            }
+
+            if (((spriteBlanco.getPositionX()+spriteBlanco.getWidth()/2)+30) < PantallaDispositivo.getWidth())
+            {
+                spriteBlanco.runAction(mover);
+            }*/
+
 
             do {
                 spriteVerde.runAction(mover);
@@ -125,7 +150,6 @@ public class Game {
             do {
                 spriteBlanco.runAction(mover);
             }while (((spriteBlanco.getPositionX() + spriteBlanco.getWidth()/2) + 30) < PantallaDispositivo.getWidth());
-
             return true;
         }
         @Override
@@ -146,12 +170,12 @@ public class Game {
             spriteAzul = Sprite.sprite("cuadradoazul.png");
             spriteBlanco = Sprite.sprite("cuadradoblanco.png");
 
-            spriteVerde.setPosition(PantallaDispositivo.getWidth()/4 - spriteVerde.getWidth()/2, PantallaDispositivo.getHeight()/4 + spriteVerde.getHeight()/4);
-            spriteRojo.setPosition(PantallaDispositivo.getWidth() - spriteRojo.getWidth()/2, PantallaDispositivo.getHeight()/4 + spriteRojo.getHeight()/4);
+            spriteVerde.setPosition(PantallaDispositivo.getWidth()/4 - spriteVerde.getWidth()/4, PantallaDispositivo.getHeight()/4 + spriteVerde.getHeight()/4);
+            spriteRojo.setPosition(PantallaDispositivo.getWidth() - spriteRojo.getWidth(), PantallaDispositivo.getHeight()/4 + spriteRojo.getHeight()/4);
 
 
-            spriteAzul.setPosition(PantallaDispositivo.getWidth() - spriteAzul.getWidth()/2, PantallaDispositivo.getHeight() - spriteAzul.getHeight()*2);
-            spriteBlanco.setPosition(PantallaDispositivo.getWidth()/4 - spriteBlanco.getWidth()/2, PantallaDispositivo.getHeight() - spriteBlanco.getHeight()*2);
+            spriteAzul.setPosition(PantallaDispositivo.getWidth() - spriteAzul.getWidth(), PantallaDispositivo.getHeight() - spriteAzul.getHeight()*2);
+            spriteBlanco.setPosition(PantallaDispositivo.getWidth()/4 - spriteBlanco.getWidth()/4, PantallaDispositivo.getHeight() - spriteBlanco.getHeight()*2);
 
             Log.d("Verde position", " x " + spriteVerde.getPositionX() + " y " + spriteVerde.getPositionY());
             Log.d("Rojo position", " x " + spriteRojo.getPositionX() + " y " + spriteRojo.getPositionY());
