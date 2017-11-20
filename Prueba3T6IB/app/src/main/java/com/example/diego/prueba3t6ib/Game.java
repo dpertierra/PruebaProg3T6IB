@@ -28,10 +28,10 @@ import java.util.Random;
 public class Game {
     CCGLSurfaceView _VistaJuego;
     CCSize PantallaDispositivo;
-    Sprite sprite;
-    Sprite sprite2;
-    Sprite sprite3;
-    Sprite sprite4;
+    Sprite spriteVerde;
+    Sprite spriteRojo;
+    Sprite spriteAzul;
+    Sprite spriteBlanco;
 
     public Game(CCGLSurfaceView Vistadeljuego)
     {
@@ -72,33 +72,33 @@ public class Game {
            RotateBy rotateByIzquierda3 = RotateBy.action(1f, -360f);
             Log.d("Random " , "El num es " + spriteElegido);
            if (spriteElegido==0) {
-                sprite.runAction(rotateByDerecha);
-                sprite2.runAction(rotateByIzquierda);
-                sprite3.runAction(rotateByIzquierda2);
-                sprite4.runAction(rotateByIzquierda3);
-                Log.d("Opuesto", "El sprite 1 gira para la derecha y todo el resto para la izquierda");
+                spriteVerde.runAction(rotateByDerecha);
+                spriteRojo.runAction(rotateByIzquierda);
+                spriteAzul.runAction(rotateByIzquierda2);
+                spriteBlanco.runAction(rotateByIzquierda3);
+                Log.d("Opuesto", "El sprite VERDE gira para la derecha y todo el resto para la izquierda");
             }
 
            else if (spriteElegido==1) {
-                sprite2.runAction(rotateByDerecha);
-                sprite.runAction(rotateByIzquierda);
-                sprite3.runAction(rotateByIzquierda2);
-                sprite4.runAction(rotateByIzquierda3);
-                Log.d("Opuesto", "El sprite 2 gira para la derecha y todo el resto para la izquierda");
+                spriteRojo.runAction(rotateByDerecha);
+                spriteVerde.runAction(rotateByIzquierda);
+                spriteAzul.runAction(rotateByIzquierda2);
+                spriteBlanco.runAction(rotateByIzquierda3);
+                Log.d("Opuesto", "El sprite ROJO gira para la derecha y todo el resto para la izquierda");
             }
            else if (spriteElegido == 2) {
-                sprite3.runAction(rotateByDerecha);
-                sprite2.runAction(rotateByIzquierda);
-                sprite.runAction(rotateByIzquierda2);
-                sprite4.runAction(rotateByIzquierda3);
-                Log.d("Opuesto", "El sprite 3 gira para la derecha y todo el resto para la izquierda");
+                spriteAzul.runAction(rotateByDerecha);
+                spriteRojo.runAction(rotateByIzquierda);
+                spriteVerde.runAction(rotateByIzquierda2);
+                spriteBlanco.runAction(rotateByIzquierda3);
+                Log.d("Opuesto", "El sprite AZUL gira para la derecha y todo el resto para la izquierda");
             }
-           else if (spriteElegido==3) {
-                sprite4.runAction(rotateByDerecha);
-                sprite2.runAction(rotateByIzquierda);
-                sprite3.runAction(rotateByIzquierda);
-                sprite.runAction(rotateByIzquierda);
-                Log.d("Opuesto", "El sprite 4 gira para la derecha y todo el resto para la izquierda");
+           else if (spriteElegido == 3) {
+                spriteBlanco.runAction(rotateByDerecha);
+                spriteRojo.runAction(rotateByIzquierda);
+                spriteAzul.runAction(rotateByIzquierda);
+                spriteVerde.runAction(rotateByIzquierda);
+                Log.d("Opuesto", "El sprite BLANCO gira para la derecha y todo el resto para la izquierda");
             }
             return true;
         }
@@ -108,21 +108,21 @@ public class Game {
 
             MoveBy mover = MoveBy.action(1f,30,0);
 
-            if ((sprite.getPositionX() + sprite.getWidth()/2) < PantallaDispositivo.getWidth())
+            if ((spriteVerde.getPositionX() + spriteVerde.getWidth()/2) < PantallaDispositivo.getWidth())
             {
-                sprite.runAction(mover);
+                spriteVerde.runAction(mover);
             }
-            if ((sprite2.getPositionX() + sprite2.getWidth()/2) < PantallaDispositivo.getWidth())
+            if ((spriteRojo.getPositionX() + spriteRojo.getWidth()/2) < PantallaDispositivo.getWidth())
             {
-                sprite2.runAction(mover);
+                spriteRojo.runAction(mover);
             }
-            if ((sprite3.getPositionX() + sprite3.getWidth()/2) < PantallaDispositivo.getWidth())
+            if ((spriteAzul.getPositionX() + spriteAzul.getWidth()/2) < PantallaDispositivo.getWidth())
             {
-                sprite3.runAction(mover);
+                spriteAzul.runAction(mover);
             }
-            if ((sprite4.getPositionX() + sprite4.getWidth()/2) < PantallaDispositivo.getWidth())
+            if ((spriteBlanco.getPositionX() + spriteBlanco.getWidth()/2) < PantallaDispositivo.getWidth())
             {
-                sprite4.runAction(mover);
+                spriteBlanco.runAction(mover);
             }
             return true;
         }
@@ -133,37 +133,37 @@ public class Game {
             ScaleBy scale = ScaleBy.action(1f,1.3f);
             ScaleTo scale2 = ScaleTo.action(1f,1f);
             Secuencia = Sequence.actions(scale,scale2,scale,scale2,scale,scale2);
-            sprite.runAction(Secuencia);
+            spriteVerde.runAction(Secuencia);
             return true;
         }
 
 
 
         public void creaSprite(){
-            sprite = Sprite.sprite("cuadradoverde.png");
-            sprite2 = Sprite.sprite("cuadradorojo.png");
-            sprite3 = Sprite.sprite("cuadradoverde.png");
-            sprite4 = Sprite.sprite("cuadradorojo.png");
+            spriteVerde = Sprite.sprite("cuadradoverde.png");
+            spriteRojo = Sprite.sprite("cuadradorojo.png");
+            spriteAzul = Sprite.sprite("cuadradoazul.png");
+            spriteBlanco = Sprite.sprite("cuadradoblanco.png");
 
 
-            sprite.setPosition(PantallaDispositivo.getWidth()/4 - sprite.getWidth()/4, PantallaDispositivo.getHeight()/4 + sprite.getHeight()/4);
-            sprite2.setPosition(PantallaDispositivo.getWidth() - sprite2.getWidth(), PantallaDispositivo.getHeight()/4 + sprite2.getHeight()/4);
+            spriteVerde.setPosition(PantallaDispositivo.getWidth()/4 - spriteVerde.getWidth()/4, PantallaDispositivo.getHeight()/4 + spriteVerde.getHeight()/4);
+            spriteRojo.setPosition(PantallaDispositivo.getWidth() - spriteRojo.getWidth(), PantallaDispositivo.getHeight()/4 + spriteRojo.getHeight()/4);
 
 
-            sprite3.setPosition(PantallaDispositivo.getWidth() - sprite2.getWidth(), PantallaDispositivo.getHeight() - sprite2.getHeight()*2);
-            sprite4.setPosition(PantallaDispositivo.getWidth()/4 - sprite.getWidth()/4, PantallaDispositivo.getHeight() - sprite.getHeight()*2);
+            spriteAzul.setPosition(PantallaDispositivo.getWidth() - spriteAzul.getWidth(), PantallaDispositivo.getHeight() - spriteAzul.getHeight()*2);
+            spriteBlanco.setPosition(PantallaDispositivo.getWidth()/4 - spriteBlanco.getWidth()/4, PantallaDispositivo.getHeight() - spriteBlanco.getHeight()*2);
 
-            Log.d("Sprite 1 position", " x " + sprite.getPositionX() + " y " + sprite.getPositionY());
-            Log.d("Sprite 2 position", " x " + sprite2.getPositionX() + " y " + sprite2.getPositionY());
-            Log.d("Sprite 3 position", " x " + sprite3.getPositionX() + " y " + sprite3.getPositionY());
-            Log.d("Sprite 4 position", " x " + sprite4.getPositionX() + " y " + sprite4.getPositionY());
+            Log.d("Verde position", " x " + spriteVerde.getPositionX() + " y " + spriteVerde.getPositionY());
+            Log.d("Rojo position", " x " + spriteRojo.getPositionX() + " y " + spriteRojo.getPositionY());
+            Log.d("Azul position", " x " + spriteAzul.getPositionX() + " y " + spriteAzul.getPositionY());
+            Log.d("Blanco position", " x " + spriteBlanco.getPositionX() + " y " + spriteBlanco.getPositionY());
 
 
 
-            super.addChild(sprite);
-            super.addChild(sprite2);
-            super.addChild(sprite3);
-            super.addChild(sprite4);
+            super.addChild(spriteVerde);
+            super.addChild(spriteRojo);
+            super.addChild(spriteAzul);
+            super.addChild(spriteBlanco);
         }
 
     }
