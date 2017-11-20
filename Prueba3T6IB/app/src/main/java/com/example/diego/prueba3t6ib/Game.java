@@ -32,6 +32,7 @@ public class Game {
     Sprite spriteRojo;
     Sprite spriteAzul;
     Sprite spriteBlanco;
+    ArrayList<Sprite>arraySprites = new ArrayList<>();
 
     public Game(CCGLSurfaceView Vistadeljuego)
     {
@@ -108,22 +109,31 @@ public class Game {
 
             MoveBy mover = MoveBy.action(1f,30,0);
 
-            if ((spriteVerde.getPositionX() + spriteVerde.getWidth()/2) < PantallaDispositivo.getWidth())
-            {
+            do {
                 spriteVerde.runAction(mover);
-            }
-            if ((spriteRojo.getPositionX() + spriteRojo.getWidth()/2) < PantallaDispositivo.getWidth())
-            {
+            }while (((spriteVerde.getPositionX() + spriteVerde.getWidth()/2)+30) < PantallaDispositivo.getWidth());
+
+            do {
                 spriteRojo.runAction(mover);
-            }
-            if ((spriteAzul.getPositionX() + spriteAzul.getWidth()/2) < PantallaDispositivo.getWidth())
-            {
-                spriteAzul.runAction(mover);
-            }
-            if ((spriteBlanco.getPositionX() + spriteBlanco.getWidth()/2) < PantallaDispositivo.getWidth())
-            {
+            }while (((spriteRojo.getPositionX() + spriteRojo.getWidth()/2)+30) < PantallaDispositivo.getWidth());
+
+
+            do {
+                    spriteAzul.runAction(mover);
+            }while (((spriteAzul.getPositionX() + spriteAzul.getWidth()/2) + 30) < PantallaDispositivo.getWidth());
+
+
+            do {
                 spriteBlanco.runAction(mover);
-            }
+            }while (((spriteBlanco.getPositionX() + spriteBlanco.getWidth()/2) + 30) < PantallaDispositivo.getWidth());
+
+/*
+            for (int i=0; i<4; i++)
+            {
+                if ((arraySprites.get(i).getPositionX() + arraySprites.get(i).getWidth()/2 + 30) < PantallaDispositivo.getWidth()) {
+                    arraySprites.get(i).runAction(mover);
+                }
+            }*/
             return true;
         }
 
@@ -145,6 +155,11 @@ public class Game {
             spriteAzul = Sprite.sprite("cuadradoazul.png");
             spriteBlanco = Sprite.sprite("cuadradoblanco.png");
 
+
+            arraySprites.add(spriteVerde);
+            arraySprites.add(spriteRojo);
+            arraySprites.add(spriteAzul);
+            arraySprites.add(spriteBlanco);
 
             spriteVerde.setPosition(PantallaDispositivo.getWidth()/4 - spriteVerde.getWidth()/4, PantallaDispositivo.getHeight()/4 + spriteVerde.getHeight()/4);
             spriteRojo.setPosition(PantallaDispositivo.getWidth() - spriteRojo.getWidth(), PantallaDispositivo.getHeight()/4 + spriteRojo.getHeight()/4);
